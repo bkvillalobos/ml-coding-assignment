@@ -21,9 +21,9 @@ Any invalid columns or values will be imputed with NaN values. Missing columns w
 
 Example GET request: http://34.192.12.23/api?age=20&body_part=31&diag=62&trmt_date=11/12/2016&location=1&race=1&stratum=S&prod1=1411&sex=1
 
-The get request returns its disposition prediction code (1,2,4,5,8, or 9)for the input parameters. Please contact me if the server happens to be down.
+The GET request returns its disposition prediction code (1,2,4,5,8, or 9) for the given input parameters. Please contact me if the server happens to be down.
 
-## Building
+## Build
 Requirements: Python-2.7.X and most up-to-date pip.
 
 To build and deploy your own Neiss scoring server from this repo:
@@ -46,6 +46,8 @@ export FLASK_APP="[absolute_path]/neiss/neiss_server.py"
 # $FLASK_APP is only defined for the length of the session, so it should be added to .bashrc or .bash_profile
 flask run --host=0.0.0.0 --port:80 # port 80 exposes to http access
 ```
+
+The http://34.192.12.23/api build is hosted on an AWS EC2 instance.
 
 ## Project Structure
 This is the overall design of the project:
