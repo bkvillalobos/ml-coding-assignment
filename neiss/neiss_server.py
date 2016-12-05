@@ -5,7 +5,7 @@ import numpy as np
 app = Flask(__name__)
 
 req_cols = list(cols.CRITICAL_COLS)
-### TODO: make much more robust i.e. error checking
+### TODO: make much more robust & refactor more modularly
 @app.route('/api', methods=['GET'])
 def hello_world():
     s = Scorer()
