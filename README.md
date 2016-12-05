@@ -33,6 +33,9 @@ git clone "https://github.com/bkvillalobos/ml-coding-assignment.git"
 cd ml-coding-assignment/
 cd ml-coding-assignment/neiss/
 
+# unzip seralized model
+gunzip models/20161205-01-43-30_rf_weighted_resampling.pkl.gz 
+
 # install requirements
 virtualenv venv # not required, but recommended
 source venv/bin/activate # not required, but recommended
@@ -67,3 +70,10 @@ Implemented components:
   * **20161205-01-43-30_rf_weighted_resampling.pkl.gz** - serialized and compressed skicit-learn model object. Currently holds a weighted resampled Random Forest trained on 12/05/2015, but it's designed to hold multiple versions and different kinds of models. Only most recent model of type [model_type] is used.
 
 ## Model Accuracy
+The model has an out-of-sample predictive accuracy of ~96.6%. Raw model accuracy can be misleading with this type of unbalanced data (91% of observations are of disposition 1, so you can get 91% accuracy for just predicting 1 for everything!). So, I've included a breakdown of accuracy conditioned upon disposition:
+
+  ![Alt text](RF weighted sampling with replacement.png?raw=true "Results for RF weighted sampling with replacement")
+
+As you can see, the model has a greater than 50% chance of correctly predicting any disposition category - even disposition 9, which was only observed 32 times out of the entire NEISS survey of ! Performance dramatically increases with the more slightly more frequent catgories of 2 and 4 (each < 6% of training data), and is virtually perfect for dispositon category 1.
+
+These results were obtained (and can be reproduced end-to-end from the raw NEISS data) in **research_and_dev.ipynb**.
