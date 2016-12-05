@@ -1,13 +1,14 @@
-class feConstants:
+class FeConstants:
     """
     Constants useful for feature extraction. If the names ever need to be changed, changes here will propagate.
     """
     DT_FMT = '%m/%d/%Y'
-    MONTH = '%m'
+    MONTH_FMT = '%m'
     NOMINAL_FEATS = ('sex', 'race', 'stratum', 'diag', 'body_part', 'location')
-    TO_ADD = ['month', 'age','disposition']
+    TO_ADD = ['month', 'age']
+    VALID_DISPOSITIONS = {1,2,4,5,6,8,9}
 
-class colNames:
+class ColNames:
     """
     Constants in raw data files.
     """
@@ -30,8 +31,10 @@ class colNames:
     PROD2 = 'prod2'
     NARR1 = 'narr1'
     NARR2 = 'narr2'
+    CRITICAL_COLS = {TRMT_DATE, STRATUM, AGE, SEX, RACE, DIAG, BODY_PART, LOCATION, PROD1}
+    TO_DECOMPOSE = {SEX.upper(), RACE.upper(), STRATUM.upper(), DIAG.upper(), BODY_PART.upper(), LOCATION.upper()}
 
-class featNames:
+class FeatNames:
     """
     Extracted feature constants.
     """
@@ -118,10 +121,10 @@ class featNames:
     MONTH = 'month'
     AGE = 'age'
     DISPOSITION = 'disposition'
-    TARG_1 = 'targ_1'
-    TARG_2 = 'targ_2'
-    TARG_4 = 'targ_4'
-    TARG_5 = 'targ_5'
-    TARG_6 = 'targ_6'
-    TARG_8 = 'targ_8'
-    TARG_9 = 'targ_9'
+    PROD_TARG_1 = 'prod_targ_1'
+    PROD_TARG_2 = 'prod_targ_2'
+    PROD_TARG_4 = 'prod_targ_4'
+    PROD_TARG_5 = 'prod_targ_5'
+    PROD_TARG_6 = 'prod_targ_6'
+    PROD_TARG_8 = 'prod_targ_8'
+    PROD_TARG_9 = 'prod_targ_9'
