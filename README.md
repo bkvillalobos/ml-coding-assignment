@@ -30,7 +30,6 @@ To build and deploy your own Neiss scoring server from this repo:
 ```
 # clone repo
 git clone "https://github.com/bkvillalobos/ml-coding-assignment.git"
-cd ml-coding-assignment/
 cd ml-coding-assignment/neiss/
 
 # unzip seralized model
