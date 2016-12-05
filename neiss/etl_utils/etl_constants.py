@@ -4,7 +4,10 @@ class FeConstants:
     """
     DT_FMT = '%m/%d/%Y'
     MONTH_FMT = '%m'
-    NOMINAL_FEATS = ('sex', 'race', 'stratum', 'diag', 'body_part', 'location')
+    NOMINAL_FEATS = ['sex', 'race', 'stratum', 'diag', 'body_part', 'location']
+    STRING_FEATS = ['CPSC Case #', 'trmt_date', 'stratum', 'narr1', 'narr2']
+    FLOAT_FEATS = ['weight', 'age']
+    INT_FEATS = ['sex', 'race', 'prod1', 'prod2', 'diag', 'body_part', 'location']
     TO_ADD = ['month', 'age']
     VALID_DISPOSITIONS = {1,2,4,5,6,8,9}
 

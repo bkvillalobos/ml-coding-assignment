@@ -1,6 +1,10 @@
 from scorer_constants import MiscConstants as misc, ModelConstants as modc
-from etl_utils.feature_extractor import FeatureExtractor
-from etl_utils.etl_constants import ColNames as cols
+try: # relative imports for server usage
+    from ..etl_utils.feature_extractor import FeatureExtractor
+    from ..etl_utils.etl_constants import ColNames as cols
+except ValueError:
+    from etl_utils.feature_extractor import FeatureExtractor
+    from etl_utils.etl_constants import ColNames as cols
 
 class Scorer:
     """
@@ -39,9 +43,9 @@ class Scorer:
         try:
             feat = FeatureExtractor(input)
             y_hat = self.model.predict(feat.extract_features())
-        except ValueError:
+        except ValueError as v:
             raise ValueError("Bad input data: can't fit model. At minumum, you need values for "
-                             "'{age}' and '{dt}' (MM/DD/YYYY) to yield a prediction.".format(age=cols.AGE, dt=cols.TRMT_DATE))
+                             "'{age}' and '{dt}' (MM/DD/YYYY) to yield a prediction.\n\t{m}".format(age=cols.AGE, dt=cols.TRMT_DATE, m=v.message))
         return y_hat
 
 

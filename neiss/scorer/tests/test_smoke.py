@@ -44,5 +44,20 @@ def test_smoke():
     result = s.score(test_data)
     assert s.score(test_data)[0] in {1, 2, 4, 5, 6, 8, 9}
 
+    #  try string ints
+    test_data = {cols.TRMT_DATE: ['11/12/2013'],
+                 cols.STRATUM: [np.nan],
+                 cols.AGE: ['20'],
+                 cols.SEX: [np.nan],
+                 cols.RACE: [np.nan],
+                 cols.DIAG: [np.nan],
+                 cols.BODY_PART: [np.nan],
+                 cols.LOCATION: [np.nan],
+                 cols.PROD1: [np.nan]}
+    result = s.score(test_data)
+    assert s.score(test_data)[0] in {1, 2, 4, 5, 6, 8, 9}
+
+
+
 if __name__ == '__main__':
     test_smoke()

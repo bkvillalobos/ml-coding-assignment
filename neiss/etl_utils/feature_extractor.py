@@ -135,6 +135,21 @@ class FeatureExtractor:
         if missing_cols:
             raise ValueError('These data are missing the following columns that are '
                              'critical to feature extraction transformations:\n\t{cols}'.format(cols=missing_cols))
+
+        # ensure that all data is of the correct type:
+        for feat in fec.FLOAT_FEATS:
+            try:
+                inputs[feat] = [float(val) for val in inputs[feat].values] if feat in inputs.columns else np.nan
+            except ValueError:
+                raise ValueError('Could not convert {f} to float'.format(f=feat))
+        for feat in fec.INT_FEATS + [col.PROD1, col.PROD2]:
+            try:
+                inputs[feat] = [int(val) if pd.notnull(val) else np.nan
+                                for val in inputs[feat].values] if feat in inputs.columns else np.nan
+            except ValueError as v:
+                raise ValueError('Could not convert {i} to int\n\t{m}'.format(i=feat, m=v.message))
+
+
         return inputs
 
 
