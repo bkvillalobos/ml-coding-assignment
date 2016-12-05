@@ -1,6 +1,6 @@
 # ml-coding-assignment
 
-This is the productionized code for my assignment model. 
+This is the productionized code for my NEISS Survey Data model. 
 
 ## Usage
 I originally planned to implement a command line interface and an API, but I only had enough time for the API.  This API was envisioned as accessible by a mobile application, so that an individual can enter his or her 'diagnosis' (i.e. injury symptoms) and stats and obtain a prediction of their ER outcome. You can access the
@@ -21,9 +21,28 @@ Any invalid columns or values will be imputed with NaN values. Missing columns w
 
 Example GET request: http://34.192.12.23/api?age=20&body_part=31&diag=62&trmt_date=11/12/2016&location=1&race=1&stratum=S&prod1=1411&sex=1
 
-The get request returns its disposition prediction code for the input parameters.
+The get request returns its disposition prediction code (1,2,4,5,8, or 9)for the input parameters. Please contact me if the server happens to be down.
 
 ## Building
+Requirements: Python-2.7.X and most up-to-date pip.
+
+To build and deploy your own Neiss scoring server from this repo:
+```
+# clone repo
+git clone "https://github.com/bkvillalobos/ml-coding-assignment.git"
+cd ml-coding-assignment/
+cd ml-coding-assignment/neiss/
+
+# install requirements
+virtualenv venv # not required, but recommended
+source venv/bin/activate # not required, but recommended
+pip install -r requirements.txt
+
+# start FLASK server
+export FLASK_APP="[absolute_path]/neiss/neiss_server.py" 
+# $FLASK_APP is only defined for the length of the session, so it should be added to .bashrc or .bash_profile
+flask run --host=0.0.0.0 --port:80 # port 80 exposes to http access
+```
 
 ## Project Structure
 This is the overall design of the project:
