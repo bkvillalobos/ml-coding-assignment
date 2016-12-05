@@ -20,7 +20,6 @@ def test_extract_features():
     feat = FeatureExtractor(test_data)
     expected = pd.read_csv('expected/extract_features.tsv', sep='\t')
     observed = feat.extract_features()
-
     assert all([round(exp,6) == round(obs,6) for exp, obs in zip(expected.ix[0].values, observed.ix[0].values)])
 
     # TODO: add more cases to try to break fxn
@@ -50,12 +49,13 @@ def test_nominal_to_dummies():
                  cols.SEX: [1],
                  cols.RACE: [5],
                  cols.DIAG: [59],
-                 cols.BODY_PART: [77],
+                 cols.BODY_PART: ['77'],
                  cols.LOCATION: [4],
                  cols.PROD1: [1807]}
     feat = FeatureExtractor(test_data)
     expected_vals = pd.read_csv('expected/nominal_to_dummies.tsv', sep='\t')
     observed = feat._nominal_to_dummies(fec.NOMINAL_FEATS)
+
     assert all([exp == obs for exp,obs in zip(expected_vals.ix[0].values,observed.ix[0].values)])
 
     # TODO: add more cases to try to break fxn

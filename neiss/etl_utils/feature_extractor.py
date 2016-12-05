@@ -110,7 +110,7 @@ class FeatureExtractor:
         dummy_df = pd.get_dummies(self.raw_df.loc[:, nom_features])
 
         # ensure that unobserved values are still decomposed and added to the dataframe
-        all_ext_features = dir(fnames)
+        all_ext_features = [s.lower() for s in dir(fnames)]
         cols_needed = set([feat for feat in all_ext_features if '_'.join(feat.split('_')[:-1]) in col.TO_DECOMPOSE])
         missing_cols = cols_needed.difference(set(dummy_df.columns))
         for missing in list(missing_cols):

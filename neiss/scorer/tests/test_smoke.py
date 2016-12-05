@@ -54,8 +54,21 @@ def test_smoke():
                  cols.BODY_PART: [np.nan],
                  cols.LOCATION: [np.nan],
                  cols.PROD1: [np.nan]}
-    result = s.score(test_data)
-    assert s.score(test_data)[0] in {1, 2, 4, 5, 6, 8, 9}
+    result = s.score(test_data)[0]
+    assert result in {1, 2, 4, 5, 6, 8, 9}
+
+    #  try expdcting a prediction other than one (model-dependent test)
+    test_data = {cols.TRMT_DATE: ['11/12/2013'],
+                 cols.STRATUM: ['S'],
+                 cols.AGE: ['20'],
+                 cols.SEX: ['1'],
+                 cols.RACE: ['1'],
+                 cols.DIAG: ['62'],
+                 cols.BODY_PART: ['31'],
+                 cols.LOCATION: ['1'],
+                 cols.PROD1: ['1411']}
+    result = s.score(test_data)[0]
+    assert result != 1
 
 
 

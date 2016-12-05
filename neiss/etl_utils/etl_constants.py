@@ -5,9 +5,9 @@ class FeConstants:
     DT_FMT = '%m/%d/%Y'
     MONTH_FMT = '%m'
     NOMINAL_FEATS = ['sex', 'race', 'stratum', 'diag', 'body_part', 'location']
-    STRING_FEATS = ['CPSC Case #', 'trmt_date', 'stratum', 'narr1', 'narr2']
+    STRING_FEATS = ['CPSC Case #', 'trmt_date', 'stratum', 'narr1', 'narr2','sex', 'race','diag', 'body_part', 'location']
     FLOAT_FEATS = ['weight', 'age']
-    INT_FEATS = ['sex', 'race', 'prod1', 'prod2', 'diag', 'body_part', 'location']
+    INT_FEATS = ['prod1', 'prod2']
     TO_ADD = ['month', 'age']
     VALID_DISPOSITIONS = {1,2,4,5,6,8,9}
 
@@ -35,7 +35,7 @@ class ColNames:
     NARR1 = 'narr1'
     NARR2 = 'narr2'
     CRITICAL_COLS = {TRMT_DATE, STRATUM, AGE, SEX, RACE, DIAG, BODY_PART, LOCATION, PROD1}
-    TO_DECOMPOSE = {SEX.upper(), RACE.upper(), STRATUM.upper(), DIAG.upper(), BODY_PART.upper(), LOCATION.upper()}
+    TO_DECOMPOSE = {SEX, RACE, STRATUM, DIAG, BODY_PART, LOCATION}
 
 class FeatNames:
     """
