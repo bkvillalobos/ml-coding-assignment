@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from etl_constants import FeConstants as fec, ColNames as col, FeatNames as fnames
 
 class FeatureExtractor:
@@ -70,9 +71,7 @@ class FeatureExtractor:
 
         # sort column names alphabetically, for consistency of input ordering expected by models
         all_ext_features = sorted([n.lower() for n in dir(fnames) if '__' not in n])
-        print [each for each in all_ext_features]
         all_ext_features.remove(fnames.DISPOSITION)
-        print self.processed_df.columns
         self.processed_df = self.processed_df[all_ext_features]
 
 
@@ -84,7 +83,11 @@ class FeatureExtractor:
         :return:
         """
         from datetime import datetime as dt
-        return int(dt.strptime(dt_str, fmt).strftime(fec.MONTH_FMT))
+        try:
+            val = int(dt.strptime(dt_str, fmt).strftime(fec.MONTH_FMT))
+        except TypeError:
+            val = np.nan
+        return val
 
     def _standardize_age(self):
         """

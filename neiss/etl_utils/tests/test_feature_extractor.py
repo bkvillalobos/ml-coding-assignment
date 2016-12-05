@@ -18,7 +18,6 @@ def test_extract_features():
                  cols.LOCATION: [4],
                  cols.PROD1: [1807]}
     feat = FeatureExtractor(test_data)
-
     expected = pd.read_csv('expected/extract_features.tsv', sep='\t')
     observed = feat.extract_features()
 
