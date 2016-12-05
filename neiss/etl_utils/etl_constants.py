@@ -5,7 +5,7 @@ class feConstants:
     DT_FMT = '%m/%d/%Y'
     MONTH = '%m'
     NOMINAL_FEATS = ('sex', 'race', 'stratum', 'diag', 'body_part', 'location')
-    TO_ADD = ('month', 'age','disposition')
+    TO_ADD = ['month', 'age','disposition']
 
 class colNames:
     """

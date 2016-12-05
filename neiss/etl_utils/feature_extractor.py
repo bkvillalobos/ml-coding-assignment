@@ -11,10 +11,10 @@ class FeatureExtractor:
         self.raw_df = patient_data
         self.processed_df = None
 
-    def extract_features(self, data_as_df):
+    def extract_features(self, keep_weight_vector=False):
         """
         # TODO: doc
-        :param data_as_df:
+        :param keep_weight_vector:
         :return:
         """
         # extract month information from dates
@@ -27,7 +27,7 @@ class FeatureExtractor:
         self.processed_df = self._nominal_to_dummies(fec.NOMINAL_FEATS)
 
         # combine extracted binary features with transformed features we want to keep
-        for feat in fec.TO_ADD:
+        for feat in fec.TO_ADD + keep_weight_vector*[col.WEIGHT]: # only include weight vector if explictly asked
             self.processed_df[feat] = self.raw_df[feat]
 
         return self.processed_df
@@ -50,7 +50,7 @@ class FeatureExtractor:
         :return: standardized float vector representing age in years
         """
         standardize_age = lambda age: (age - 200) / 12.0 if age > 200 else float(age)
-        self.raw_df['age'] = self.raw_df['age'].apply(standardize_age)
+        self.raw_df[col.AGE] = self.raw_df[col.AGE].apply(standardize_age)
 
     def _nominal_to_dummies(self, nom_features):
         """
