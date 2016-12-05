@@ -47,7 +47,7 @@ export FLASK_APP="[absolute_path]/neiss/neiss_server.py"
 flask run --host=0.0.0.0 --port:80 # port 80 exposes to http access
 ```
 
-The http://34.192.12.23/api build is hosted on an AWS EC2 instance.
+The http://34.192.12.23/api build is hosted on an AWS EC2 instance. See my email for the .pem file to take a peek under the hood.
 
 ## Project Structure
 This is the overall design of the project:
