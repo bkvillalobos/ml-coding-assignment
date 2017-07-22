@@ -1,6 +1,6 @@
 # ml-coding-assignment
 
-This is the productionized code for a machine learning engieering job interview assignment. The original assignment instructions can be found in [ASSIGNMENT_README.md](ASSIGNMENT_INSTRUCTIONS.md).
+This is the productionized code for a machine learning engieering job interview assignment. The original assignment instructions can be found in [ASSIGNMENT_INSTRUCTIONS.md](ASSIGNMENT_INSTRUCTIONS.md).
 
 ## Usage
 I originally planned to implement a command line interface and an API, but I only had enough time for the API.  This API was envisioned as accessible by a mobile application, so that an individual can enter his or her 'diagnosis' (i.e. injury symptoms) and stats and obtain a prediction of their ER outcome. You can access the
@@ -75,7 +75,7 @@ Implemented components:
 
 The model has an out-of-sample predictive accuracy of ~96.6%. Raw model accuracy can be misleading with this type of unbalanced data (91% of observations are of disposition 1, so you can get 91% accuracy for just predicting 1 for everything!). So, I've included a breakdown of accuracy conditioned upon disposition:
 
-  [[RF weighted sampling with replacement.png]]
+  ![Alt text](RF_weighted_sampling_with_replacement.png?raw=true "Results for RF weighted sampling with replacement")
 
 As you can see, the model has a greater than 50% chance of correctly predicting any disposition category - even disposition 9, which was only observed 32 times out of the entire NEISS survey of ~2.7 million records! Performance dramatically increases with the more slightly more frequent catgories of 2 and 4 (each < 6% of training data), and is virtually perfect for dispositon category 1.
 
