@@ -1,6 +1,6 @@
 # ml-coding-assignment
 
-This is the productionized code for a machine learning engieering job interview assignment. The original assignment instructions can be found in [ASSIGNMENT_README.md](ASSIGNMENT_README.md).
+This is the productionized code for a machine learning engieering job interview assignment. The original assignment instructions can be found in [ASSIGNMENT_README.md](ASSIGNMENT_INSTRUCTIONS.md).
 
 ## Usage
 I originally planned to implement a command line interface and an API, but I only had enough time for the API.  This API was envisioned as accessible by a mobile application, so that an individual can enter his or her 'diagnosis' (i.e. injury symptoms) and stats and obtain a prediction of their ER outcome. You can access the
@@ -71,7 +71,7 @@ Implemented components:
   * **20161205-01-43-30_rf_weighted_resampling.pkl.gz** - serialized and compressed skicit-learn model object. Currently holds a weighted resampled Random Forest trained on 12/05/2015, but it's designed to hold multiple versions and different kinds of models. Only most recent model of type [model_type] is used.
 
 ## Model Accuracy Summary
-**See [NEISS Survey Data Model.pdf]("NEISS Survey Data Model.pdf") in this repo for a longer discussion on model methodology & development.**
+**See [NEISS Survey Data Model.pdf](NEISS Survey Data Model.pdf) in this repo for a longer discussion on model methodology & development.**
 
 The model has an out-of-sample predictive accuracy of ~96.6%. Raw model accuracy can be misleading with this type of unbalanced data (91% of observations are of disposition 1, so you can get 91% accuracy for just predicting 1 for everything!). So, I've included a breakdown of accuracy conditioned upon disposition:
 
